@@ -1,0 +1,12 @@
+class Solution:
+    ##Complete this function
+    #Function to find the sum of contiguous subarray with maximum sum.
+    def maxSubArraySum(self,arr,N):
+        local_max = 0
+        global_max = float('-inf') # Used for negative infinity
+    
+        for ele in arr:
+            local_max = max(ele, ele+local_max)
+            if local_max>global_max:
+                global_max = local_max
+        return global_max

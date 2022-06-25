@@ -1,0 +1,3 @@
+def rotate( arr, n, m):
+    arr = arr[n-m:] + arr[:n-m]
+    return arr

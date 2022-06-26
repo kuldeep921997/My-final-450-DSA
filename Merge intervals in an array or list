@@ -1,0 +1,25 @@
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        stack = list()
+        intervals.sort()
+        stack.append(intervals[0])
+        
+        for ele in intervals:
+            popped = stack.pop()
+            
+            startpoint1 = popped[0]
+            endpoint1 = popped[1]
+            startpoint2 = ele[0]
+            endpoint2 = ele[1]
+            
+            if startpoint2 <= endpoint1:
+                if endpoint1>= endpoint2:
+                    endpoint1 = endpoint1
+                elif endpoint1< endpoint2:
+                    endpoint1 = endpoint2
+                stack.append([startpoint1, endpoint1])
+            else:
+                stack.append(popped)
+                stack.append(ele)
+                
+        return stack

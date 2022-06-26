@@ -1,11 +1,28 @@
 class Solution:
     def findDuplicate(self, nums: List[int]):
+        
+        # worst solution not even accepted because of time limit exceeded
+        
         # for ele in nums:
         #     if nums.count(ele)>1:
         #         return ele
         
-        nums.sort()
-        n = len(nums)-1
-        for i in range(n):
-            if nums[i] == nums[i+1]:
+        # Good solution but time was much higher - 1299 ms
+        # nums.sort()
+        # n = len(nums)-1
+        # for i in range(n):
+        #     if nums[i] == nums[i+1]:
+        #         return nums[i]
+        
+        
+        # Best solution time was very less - 623 ms
+        nums_len = len(nums)
+        
+        present_arr = [0] * nums_len
+        
+        for i in range(nums_len):
+            if present_arr[nums[i]] == 0:
+                present_arr[nums[i]] = 1
+            elif present_arr[nums[i]] == 1:
                 return nums[i]
+            

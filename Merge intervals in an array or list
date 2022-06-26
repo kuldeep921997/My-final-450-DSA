@@ -13,10 +13,16 @@ class Solution:
             endpoint2 = ele[1]
             
             if startpoint2 <= endpoint1:
+                
                 if endpoint1>= endpoint2:
                     endpoint1 = endpoint1
                 elif endpoint1< endpoint2:
                     endpoint1 = endpoint2
+                
+                # The above comparision can be down with the max() method but max takes more time as compared to the basic comparision method.
+                # endpoint1 = max(endpoint1, endpoint2)
+                
+                
                 stack.append([startpoint1, endpoint1])
             else:
                 stack.append(popped)

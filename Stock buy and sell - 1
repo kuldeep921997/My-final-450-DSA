@@ -19,16 +19,12 @@ class Solution:
 #       alternate approach to solve the same question.
 
         maxProfit = 0
-        mini = prices[0]
+        minBuyCost = prices[0]
         n = len(prices)
+        localMaxProfit = 0
         
         for i in range(1,n):
-            cost = prices[i] - mini
-            maxProfit = cost if cost > maxProfit else maxProfit
-            mini = mini if mini < prices[i] else prices[i]
+            localMaxProfit = prices[i] - minBuyCost #Sell price - Buy price (Local profit)
+            maxProfit = localMaxProfit if localMaxProfit > maxProfit else maxProfit
+            minBuyCost = minBuyCost if minBuyCost < prices[i] else prices[i] # Minimum buy cost is it the earlier selected one or the current days cost.
         return maxProfit
-
-    
-    
-            
-        

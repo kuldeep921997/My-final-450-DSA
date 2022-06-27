@@ -1,0 +1,34 @@
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        
+        # Correct approach but time complexity is high ~ O(n2)
+        # Hence not accepted
+        
+#         maxdiff = 0
+#         localdiff = 0
+#         last = len(prices)
+        
+#         for i in range(0,last-1):
+#             buy = prices[i]
+#             sell = max(prices[i+1:])
+#             localdiff = sell-buy
+#             if maxdiff < localdiff:
+#                 maxdiff = localdiff
+        # return maxdiff
+    
+#       alternate approach to solve the same question.
+
+        maxProfit = 0
+        mini = prices[0]
+        n = len(prices)
+        
+        for i in range(1,n):
+            cost = prices[i] - mini
+            maxProfit = cost if cost > maxProfit else maxProfit
+            mini = mini if mini < prices[i] else prices[i]
+        return maxProfit
+
+    
+    
+            
+        

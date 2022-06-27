@@ -1,0 +1,25 @@
+class Solution:    
+    def nextPermutation(self, nums: List[int]) -> None:
+        
+        id1 = len(nums)-2
+        id2 = len(nums)-1
+        min_len = len(nums)-1
+
+        # step 1 : find id1.
+        while id1>=0 and nums[id1] >= nums[id1+1]:
+            id1-=1
+            
+        if(id1>=0):
+            # step 2: find id2
+            while nums[id2] <= nums[id1]:
+                id2-=1
+            # setp 3 : swap the id1 and id2 elements. 
+            nums[id1], nums[id2] = nums[id2], nums[id1]
+            
+        # step 4 : reverse the list/ array from id1+1 till end
+        while id1+1<min_len: 
+            nums[id1+1], nums[min_len] = nums[min_len], nums[id1+1]
+            id1+=1
+            min_len-=1 
+            
+        

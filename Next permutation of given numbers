@@ -22,4 +22,8 @@ class Solution:
             id1+=1
             min_len-=1 
             
-        
+            
+            
+Steps 1,2,3,4 are normaly done.
+However if step 1 fails then don't go for the step 2 and 3.
+Step 4 must be done in each case.

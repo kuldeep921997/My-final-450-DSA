@@ -20,7 +20,7 @@ class Solution:
         #         high-=1
         # return count
         
-        
+        # below code is correct but requires the O(n2) time hence to reduce the time complexity need to use the dict and add frequencies.
         for i in range(high+1):
             for j in range(i+1, high+1):
                 temp = arr[i] + arr[j]

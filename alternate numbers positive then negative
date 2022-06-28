@@ -1,0 +1,79 @@
+# arr = [-5, 3, 4, 5, -6, -2, 8, 9, -1, -4]
+# arr = [-1,-2,1,2]
+# arr = [-1, -2, 3,4]
+# arr = [-1,-2,-3,4,5,6]
+# arr = [3,1,-2,-5,2,-4]
+# arr = [-12,-1, 3, 5, 8]
+arr = [28,-41,22,-8,-37,46,35,-9,18,-6,19,-26,-37,-10,-9,15,14,31]
+
+
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+    
+# Approach 1 : with sorting and without mantaining the order of elements
+
+#         arr.sort()
+        
+#         print(arr)
+    
+#         for i in range(n):
+#             if arr[i]>0:
+#                 positive_range = i
+#                 if i==n:
+#                     pass
+#                 elif i<n:
+#                     positive_range+=1
+#                 break;
+#             else:
+#                 positive_range = n
+                
+                
+#         if positive_range > n:
+#             return arr
+            
+#         # print(f"positive_range {positive_range}")
+        
+        
+#         for i in range(1, positive_range, 2):
+#             if positive_range<n:
+#                 print(f"i and positive_range {i}, {positive_range}")
+#                 print(f"swapping the {arr[i]}, {arr[positive_range]}")
+#                 arr[i], arr[positive_range] = arr[positive_range], arr[i]
+#                 positive_range+=2
+#         return arr
+    
+    
+# Approach 2: without sorting and mantaning the order of elements. and first element as positive always.
+        n = len(nums)
+        pos = True
+        
+        for i in range(n):
+            for j in range(i+1,n):
+                if pos:
+                    if nums[i]<0:
+                        if nums[j]>0:
+                            nums[i], nums[j] = nums[j], nums[i]
+                            pos = False
+                            break
+                        else:
+                            pos = False
+                            break
+                    else:
+                        pos = False
+                        break
+                elif pos == False:
+                    if nums[i]>0:
+                        if nums[j]<0:
+                            nums[i], nums[j] = nums[j], nums[i]
+                            pos = True
+                            break
+                        else:
+                            pos = True
+                            break
+                    else:
+                        pos = True
+                        break
+
+        
+        return nums
+        

@@ -4,18 +4,27 @@ class Solution:
     def getPairsCount(self, arr, n, k):
         low, high = 0, n-1
         count = 0
-        sol=list()
+        # sol=list()
         temp = 0
-        arr.sort
+        arr.sort()
         
-        while low < high:
-            temp = arr[low] + arr[high]
-            print(low, high)
-            if temp == k:
-                count+=1
-                # high-=1
-            if temp<k:
-                low+=1 
-            else:
-                high-=1
+        # while low < high:
+        #     temp = arr[low] + arr[high]
+        #     # print(low, high)
+        #     if temp == k:
+        #         count+=1
+        #         # high-=1
+        #     if temp<k:
+        #         low+=1 
+        #     else:
+        #         high-=1
+        # return count
+        
+        
+        for i in range(high+1):
+            for j in range(i+1, high+1):
+                temp = arr[i] + arr[j]
+                if temp==k:
+                    count+=1
+        
         return count

@@ -1,0 +1,24 @@
+# Your task is to complete this function
+# Function should return True/False or 1/0
+def PalinArray(arr ,n):
+    # Code here
+    arr = [str(x) for x in arr]
+    
+    is_palindrom = -1
+    ele_last = -1
+    last_index = -1
+    
+    for i in range(0, n):
+        
+        ele_last = len(arr[i])
+        last_index = ele_last-1
+        ele_last = ele_last//2
+        
+        for j in range(0, ele_last):
+            if arr[i][j] == arr[i][last_index]:
+                is_palindrom = 1
+                last_index-=1
+            else:
+                return 0
+                
+    return is_palindrom

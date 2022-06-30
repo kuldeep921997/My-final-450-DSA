@@ -1,0 +1,14 @@
+def isSubset( a1, a2, n, m):
+    d = {}
+    count = 0
+    
+    
+    for ele in a2:
+        d[ele] = ele
+        
+    for ele in d:
+        if d[ele] in a1:
+            count+=1
+    if count==len(a2):
+        return "Yes"
+    return "No"

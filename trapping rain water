@@ -1,0 +1,24 @@
+##### partially completed #####
+
+def waterlevel(height,i,n):
+    leftmax = max(height[0:i+1])
+    rightmax = max(height[i:n])
+    return min(leftmax, rightmax)
+
+
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        water = 0
+        n=len(height)
+        
+        if n<=2:
+            return 0
+        
+        for i in range(n):
+            level = waterlevel(height,i,n)
+            water = water+(level-height[i])
+            
+        return water
+        
+        

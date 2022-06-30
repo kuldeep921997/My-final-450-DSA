@@ -1,0 +1,14 @@
+DP dynamic programming - it is enhanced recurssion.
+
+two methods 
+1. top down approach
+2. bottom up approach
+
+When DP is used in questions?
+
+1. you will have to choose the elements to include in the solutions or not. and if there is choice then there will be recurssion.
+2. if in recurssion there is sub-problem overlapping then we can use DP. if there is o overlapping and we still want to use DP then we can but it won't be much benificial.
+3. Optimal things will be asked. (maximum value, minimum value)
+
+Basic lec video : https://www.youtube.com/watch?v=nqowUJzG-iM&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go
+

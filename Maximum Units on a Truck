@@ -1,0 +1,32 @@
+class Solution:
+    def maximumUnits(self, boxTypes: List[List[int]], truckSize: int) -> int:
+        n = len(boxTypes)
+        total = 0
+        count = 0
+        
+        boxTypes.sort(key = lambda x : x[1], reverse=True)
+
+        
+#       Most optimized approach.
+
+        for i in range(0,n):
+            if count+boxTypes[i][0]<truckSize:
+                count+=boxTypes[i][0]
+                total += boxTypes[i][0]*boxTypes[i][1]
+            else:
+                # total_boxes = boxTypes[i][0]
+                req = truckSize-count
+                total = total + (req*boxTypes[i][1])
+                count = count+req
+        return total
+    
+#         the time taken by the below neive algo is O(n^2), however we can optimise the sol^n.
+
+#         for i in range(0,n):
+#             for j in range(0, boxTypes[i][0]):
+#                 if count<truckSize:
+#                     count+=1
+#                     total+=boxTypes[i][1]
+                    
+#         return total
+        

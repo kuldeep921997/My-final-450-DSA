@@ -1,0 +1,51 @@
+class Solution:
+    def maxArea(self, h: int, w: int, horizontalCuts: List[int], verticalCuts: List[int]) -> int:
+        
+#         Horizontal line inclides the 0 as starting and "H" as end of lines.
+#         vertical cut includes the 0 as starting and "W" as end of lines.
+
+        horizontalCuts.sort()
+        verticalCuts.sort()
+        
+        row = len(horizontalCuts)
+        
+        if horizontalCuts[0]!=0:
+            horizontalCuts.insert(0,0)
+        if horizontalCuts[-1]!=h:
+            horizontalCuts.insert(len(horizontalCuts),h)
+        
+        col = len(verticalCuts)
+        
+        if verticalCuts[0]!=0:
+            verticalCuts.insert(0,0)
+        if verticalCuts[-1]!=w:
+            verticalCuts.insert(len(verticalCuts),w)
+            
+        row = len(horizontalCuts)
+        col = len(verticalCuts)
+
+            
+        row_dis = 0
+        col_dis = 0
+        
+        # print(f"rows = {horizontalCuts}")
+        # print(f"rows = {verticalCuts}")
+        
+        for i in range(0,row-1):
+            temp = horizontalCuts[i+1] - horizontalCuts[i]
+            if row_dis<temp:
+                row_dis = temp
+                
+                
+        for i in range(0,col-1):
+            temp = verticalCuts[i+1] - verticalCuts[i]
+            if col_dis<temp:
+                col_dis = temp
+                
+        # print(f"row_dis, col_dis = {row_dis}, {col_dis}")
+        
+        return ((row_dis*col_dis)%((10**9)+7))
+            
+            
+        
+        

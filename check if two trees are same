@@ -1,0 +1,41 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+a = list()
+b = list()
+class Solution:
+    
+    
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        global a
+        global b
+        
+        a = []
+        b = []
+        
+        Solution.preorder(p,a)
+        Solution.preorder(q,b)
+        
+        # print(f"a = {a}")
+        # print(f"b = {b}")
+        
+        if a==b or (not a and not b):
+            return 1
+        else:
+            return 0
+        
+    def preorder(node,arr):
+        if node and (node.val>=0 or node.val<=0):
+            arr.append(node.val)
+            Solution.preorder(node.left, arr)
+            Solution.preorder(node.right, arr)
+        else:
+            arr.append("null")
+        
+        
+        
+        

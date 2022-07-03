@@ -1,0 +1,46 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        
+        # with O(n) space and time complexity
+        
+#         d = {}
+#         node = head
+#         count = 0
+                
+#         while node:
+#             if not (node in d.values()):
+#                 d[count] = node
+#                 count+=1
+#                 node= node.next
+#             else:
+#                 return True
+#         return False
+
+
+
+        # Below is the code with O(n) time complexity and O(1) space complexity
+    
+        fast = head
+        slow = head
+        
+        while fast != slow or fast or slow:
+            if not (fast and fast.next and fast.next.next):
+                return False
+            fast = fast.next.next
+            
+            if not slow.next:
+                return False
+            slow = slow.next
+            
+            if fast==slow:
+                return True
+            elif not fast:
+                return False
+            elif not slow:
+                return False

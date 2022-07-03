@@ -1,0 +1,43 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        Sum = 0
+        n = len(s)
+        
+        d = {
+            "I":1,
+            "V":5,
+            "X":10,
+            "L":50,
+            "C":100,
+            "D":500,
+            "M":1000
+            }
+        
+        # Below logic not required
+        
+        # "IV":4,
+        # "IX":9,
+        # "IL":49,
+        # "IC":99,
+        # "ID":499,
+        # "IM":999,
+        # "XL":40,
+        # "XC":90,
+        # "XD":490,
+        # "XM":990,
+        # "LD":450,
+        # "LM":950,
+        # "CD":400,
+        # "CM":900,
+            
+        
+        Sum = d[s[n-1]]
+        
+        for i in range(n-2,-1,-1):
+            if d[s[i]]<d[s[i+1]]:
+                Sum-=d[s[i]]
+            else:
+                Sum+=d[s[i]]
+
+        return Sum
+        

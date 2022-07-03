@@ -1,0 +1,58 @@
+# Decode the string Question 1.
+
+
+class Solution:
+    def decodeMessage(self, key: str, message: str) -> str:
+        
+        # 65 - 91   A - Z
+        # 97 - 123  a - z
+        
+        char = 97
+        
+        # l1 = set()
+        # l1 = set(ele for ele in key)
+        arr = list()
+        
+        d = {}
+        
+        key = key.replace(" ", "")
+        # print(key)
+        for ele in key:
+            if not ele in d.values():
+                # print(f"setting for {chr(char)}")
+                d[chr(char)] = ele
+                char+=1
+                
+        # print(d)
+        
+        for i in range(0,len(message)):
+            if message[i]!= " ":
+                for k, v in d.items(): 
+                    if v == message[i]:
+                        val = k
+                arr.append(val)
+            else:
+                arr.append(" ")
+                
+        return "".join(arr)
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

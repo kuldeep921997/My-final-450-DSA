@@ -1,0 +1,27 @@
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        start = 1
+        end = n
+        mid = 0
+        badversion = n
+        
+        
+        while start<=end :
+            mid = (start+end)//2
+            print(f"start, mid and end = {start},{mid} and {end}", end=" ")
+            
+            val1 = isBadVersion(mid-1)
+            val2 = isBadVersion(mid)
+            val3 = isBadVersion(mid+1)
+            
+            if not val1 and val2:
+                return mid
+            
+            elif val2: end = mid-1
+            
+            elif not val2: start = mid+1
+
+        return -1

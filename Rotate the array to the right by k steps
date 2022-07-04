@@ -1,0 +1,40 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """Do not return anything, modify nums in-place instead."""
+        
+        n=len(nums)
+        k = k%n
+
+        if n>1 and k!=0 and k!=n:
+            Solution.reverse(nums, 0,n-k-1)
+            Solution.reverse(nums, n-k, n-1)
+            start1,start2 = 0, n-1
+            
+            while start1<=start2:
+                nums[start1], nums[start2]  = nums[start2], nums[start1]
+                start1+=1
+                start2-=1
+            
+    def reverse(nums, reverse_from, end):
+        if abs(reverse_from-end) == 0: return
+        while reverse_from<=end:
+            nums[reverse_from], nums[end] = nums[end], nums[reverse_from]
+            reverse_from+=1
+            end-=1
+        
+        
+        # The below solution is good but takes much time. SO TLE happend
+        
+#         if k==0:
+#             return nums
+        
+#         count = k
+        
+#         while count:
+#             temp = nums[n-1]
+#             loc = n-1
+#             while loc:
+#                 nums[loc-1], nums[loc] = nums[loc], nums[loc-1]
+#                 loc-=1
+#             count-=1
+            

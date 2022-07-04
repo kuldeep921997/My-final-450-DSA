@@ -1,0 +1,42 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        start = 0
+        n = len(nums)
+        end = n-1
+        mid = 0
+        
+        
+        if n < 50:
+            if target in nums:
+                return nums.index(target)
+            return -1
+                
+        while start<=end :
+            mid = (start+end)//2
+            print(f"inside while and pointer = {mid}", end=" ")
+            if target<nums[mid]:
+                print(f"inside A", end=" ")
+                end = mid-1
+                # if end==pointer: return -1
+            elif target>nums[mid]:
+                print(f"inside B", end=" ")
+                start = mid+1
+                # if start==pointer: return -1
+            elif target == nums[mid]:
+                print(f"inside C", end=" ")
+                return mid
+            print("")
+        
+        return -1
+        
+        
+        
+        # The below approach iis simple and neive.
+        # We need to program this question in binary serach format
+        
+        
+        # if target in nums:
+        #     return nums.index(target)
+        # return -1
+        
+        

@@ -1,0 +1,20 @@
+n = len(numbers)
+        start = 0
+        end = n-1
+        
+        while start<=end:
+            end_val = numbers[end]
+            
+            # Have removed the below two lines as the input contains negative number as well.
+            # if there are no negative number in the list/array then 
+            # by adding the below two lines we can optimise the code.
+            
+            # if end_val>target:
+            #     end-=1
+            
+            if numbers[start]+end_val < target:
+                start+=1
+            elif numbers[start]+end_val > target:
+                end-=1
+            else:
+                return [start+1, end+1]

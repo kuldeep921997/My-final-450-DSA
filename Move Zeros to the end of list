@@ -1,0 +1,31 @@
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        
+        # Secoond version of code optimized and passes all the test cases on GFG
+        
+        n = len(nums)
+        l, r = 0,0
+        while r<n:
+            if nums[r]==0:r+=1
+            else:
+                nums[l], nums[r] = nums[r], nums[l]
+                l+=1
+                r+=1
+                
+        # return arr
+        
+        # First code ... correct but not completely optimized as it take more time and Produces TLE on GFG
+        
+    # 	zero_start_pos = n
+    # 	pos = 0
+    # 	while pos<zero_start_pos:
+    # 	    if arr[pos] == 0:
+    # 	        arr.pop(pos)
+    # 	        arr.append(0)
+    # 	        zero_start_pos-=1
+    # 	    else:
+    # 	        pos+=1
+        
+    #     return arr
+            
+        

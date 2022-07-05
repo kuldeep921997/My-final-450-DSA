@@ -1,0 +1,32 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        
+        a = [ele for ele in s]
+        
+        n = len(a)
+        i,j=0,0
+        
+        while i<=n:
+            print(f"A i,j = {i}, {j}")
+            
+            while j<n and a[j]!=" ":
+                j+=1
+            j-=1
+            
+            print(f"B i,j = {i}, {j}")
+
+            start = i
+            end = j
+
+            while start<=end:
+                a[start], a[end] = a[end], a[start]
+                start+=1
+                end-=1
+            
+            j+=2
+            i=j
+                
+        return "".join(a)
+                
+                
+        

@@ -1,0 +1,17 @@
+class Solution:
+    def runningSum(self, nums: List[int]) -> List[int]:
+        
+        count = len(nums)
+        sum = 0
+        i = 0
+        
+        if count == 1:
+            return nums
+        
+        while count>0:
+            sum += nums[i] 
+            nums[i] = sum
+            i+=1
+            count-=1
+            
+        return nums

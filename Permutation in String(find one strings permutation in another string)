@@ -1,5 +1,7 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
+    
+    Method 1: Neive method... takes much more time.
         
         n1 = len(s1)
         n2 = len(s2)
@@ -29,3 +31,49 @@ class Solution:
         return arr
             
         
+        
+    Method 2 : Advance method. save much more time.
+
+    n1 = len(s1)
+    n2 = len(s2)
+        
+    if n2<n1:
+        return False
+        
+    arr1 = [0]*26
+    arr2 = [0]*26
+    
+    start, end = 0, n1
+    
+    a = Solution.returnNumArray(s1,0,n1,arr1)
+    b = Solution.returnNumArray(s2,0,end,arr2)
+    
+    print(f"a = {a}")
+    print(f"b = {b}")
+    
+    while end<=n2:
+        if a==b:
+            print(f"inside checking A")
+            return True
+        else:
+            if end == n2:
+                return False
+            
+            end+=1
+            index = ord(s2[start])-97
+            b[index]-=1
+            
+            index = ord(s2[end-1])-97
+            b[index]+=1
+            
+            start+=1
+            
+            print(f"final b = {b}")
+            
+        return False
+        
+    def returnNumArray(s, start, end, arr):
+        for ele in s[start:end]:
+            index = ord(ele)-97
+            arr[index] +=1
+        return arr

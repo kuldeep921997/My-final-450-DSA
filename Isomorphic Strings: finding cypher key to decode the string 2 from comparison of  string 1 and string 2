@@ -1,0 +1,18 @@
+class Solution:
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        d ={}
+        n = len(s)
+        j = n-1
+        
+        
+        for i in range(n):
+            if s[i] not in d and t[i] not in d.values():
+                d[s[i]] = t[i]
+
+        while j>=0:
+            if not d.get(s[j]): return False
+            elif d[s[j]] != t[j]: return False
+            j-=1
+        
+        return True    
+        

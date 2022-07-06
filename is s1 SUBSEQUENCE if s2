@@ -1,0 +1,26 @@
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+        
+        sn = len(s)
+        tn = len(t)
+        
+        if sn == 1:
+            if s[0] in t: return True
+            return False
+                
+        i, j, matched = 0, 0, 0
+        
+        for i in range(0,sn):
+            while j < tn:
+                # print(f"checking for {s[i]}, {t[j]}, {i}, {j}")
+                if s[i] == t[j]:
+                    j+=1
+                    matched+=1
+                    break
+                else:
+                    j+=1
+            # print(f"final j = {j}")
+            
+            if j>tn-1 and matched<sn: return False
+        return True
+        

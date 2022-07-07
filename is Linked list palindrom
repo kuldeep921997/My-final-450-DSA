@@ -1,0 +1,130 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
+        
+        node = head
+        count=0
+        
+        while node:
+            count+=1
+            end = node
+            node = node.next
+            
+        if count<=4:
+            if count == 1:
+                return True
+            elif count == 2:
+                if head.val == head.next.val: return True
+                else: return False
+            elif count == 3:
+                if head.val == head.next.next.val: return True
+                else: return False
+            elif count == 4:
+                if head.val == head.next.next.next.val and head.next.val == head.next.next.val: return True
+                else: return False
+
+        
+        if count%2 == 0: count-=1
+        half = count//2
+        node = head
+        
+        while half>0:
+            node = node.next
+            half-=1
+        
+        prev = node
+        prev_copy = node.next
+        curr = node.next
+        if node and node.next and node.next.next:
+            nxt  = node.next.next
+        else:
+            nxt = None
+            
+        node.next = None
+
+        
+        while prev:
+            if curr:
+                curr.next = prev
+            
+            if not curr: break
+            prev = curr
+            
+            curr = nxt
+            if nxt and nxt.next: nxt = nxt.next
+            else: nxt = None
+        
+        prev_copy.next = None
+        node = head
+        
+        half = count//2
+
+        while half>0:
+            node = node.next
+            half-=1
+
+        node.next = prev
+        node = head
+
+        # To print the reversed array
+        # while node:
+        #     print(node.val)
+        #     node = node.next
+            
+            
+        start1 = head
+        node = head
+        prev_node = node
+        
+        half = count//2
+        
+        while half>0:
+            node = node.next
+            half-=1
+            
+        start2 = node.next
+        
+        while start2:
+            # print(f"start1.val, start2.val = {start1.val}, {start2.val}")
+            if start1.val != start2.val: return False
+            start1 = start1.next
+            start2 = start2.next
+        
+        return True
+        
+                         
+            
+        
+        
+        
+        
+        # Naive approach
+        
+#         node = head
+#         a = list()
+        
+#         while node:
+#             a.append(node.val)
+#             node = node.next
+            
+#         print(a)
+        
+#         n = len(a)
+        
+#         i, j = 0, n-1
+        
+#         while i<=j:
+#             if a[i] != a[j]:return False
+#             i+=1
+#             j-=1
+        
+#         return True
+                
+            
+            
+        

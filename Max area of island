@@ -1,0 +1,32 @@
+class Solution:
+    maxi = 0
+    local = 0
+    
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        rows = len(grid)
+        cols = len(grid[0])
+        
+        Solution.maxi, Solution.local = 0, 0
+        
+        for i in range(0, rows):
+            for j in range(0, cols):
+                if grid[i][j] == 1:
+                    Solution.local = 0
+                    Solution.floodAlgo(grid, i, j, rows, cols)
+                    Solution.maxi = max(Solution.maxi, Solution.local)
+                    
+        return Solution.maxi
+                    
+    def floodAlgo(grid, i, j, rows, cols):        
+        if i<0 or i>=rows or j<0 or j>=cols:
+            return
+        elif grid[i][j]!=1:
+            return
+        
+        grid[i][j]=2
+        Solution.local+=1
+
+        Solution.floodAlgo(grid, i-1, j, rows, cols)
+        Solution.floodAlgo(grid, i, j+1, rows, cols)
+        Solution.floodAlgo(grid, i+1, j, rows, cols)
+        Solution.floodAlgo(grid, i, j-1, rows, cols)

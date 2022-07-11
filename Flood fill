@@ -1,0 +1,26 @@
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        source  = image[sr][sc]
+        
+        if source == color: return image
+        
+        rows = len(image)
+        cols = len(image[0])
+        
+        Solution.recursiveflood(image,sr,sc,source,color,rows,cols)
+        return image
+        
+    def recursiveflood(image,sr,sc,source,color,rows,cols):
+        if sr<0 or sr>=rows or sc<0 or sc>=cols:
+            return
+        elif image[sr][sc] != source:
+            return
+        
+        image[sr][sc] = color
+            
+        Solution.recursiveflood(image,sr-1,sc,source,color,rows,cols)
+        Solution.recursiveflood(image,sr+1,sc,source,color,rows,cols)
+        Solution.recursiveflood(image,sr,sc-1,source,color,rows,cols)
+        Solution.recursiveflood(image,sr,sc+1,source,color,rows,cols)
+        
+        

@@ -1,0 +1,31 @@
+####### SOLUTION 1 BY ME: TIME COMPLEXITY  = O(N^3)
+
+
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        
+        if not matrix: return matrix
+        
+        rows = len(matrix)
+        cols = len(matrix[0])
+        
+        return Solution.setrowcol(matrix, rows, cols)
+        
+    def setrowcol(matrix, rows, cols):
+        for i in range(0, rows):
+            for j in range(0, cols):
+                if matrix[i][j] == 0:
+                    for row in range(0, cols):
+                        if matrix[i][row] != 0: matrix[i][row] = "A"
+                            
+                    for col in range(0, rows):
+                        if matrix[col][j] != 0 : matrix[col][j] = "A"
+        
+        for i in range(0, rows):
+            for j in range(0, cols):
+                if matrix[i][j] == "A": matrix[i][j] = 0
+                    
+        return matrix

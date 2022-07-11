@@ -1,0 +1,28 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        
+        d = {}
+        
+        for ele in s:
+            if ele in d:
+                d[ele]+=1
+            else: d[ele] = 1
+        
+        count = 0
+        contain_single = 0
+        
+        for ele in d:
+            if d[ele]%2 == 0: count+=d[ele]
+            elif d[ele] > 1 and d[ele]%2 == 1:
+                div = d[ele]//2
+                count=count + (div*2)
+                if contain_single == 0:
+                    count+=1
+                contain_single = 1
+            elif d[ele] == 1 and contain_single == 0:
+                count=count + 1
+                contain_single = 1
+        
+        return count
+                
+        

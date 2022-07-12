@@ -1,0 +1,127 @@
+class Solution:
+    time = 0
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        Solution.time = 0
+        rows = len(grid)
+        cols = len(grid[0])
+        
+        queue = list()
+        arr = list()
+        
+        for i in range(0, rows):
+            for j in range(0, cols):
+                if grid[i][j] == 2:
+                    queue.append((i,j))
+                    
+        Solution.rotten(grid, queue, rows, cols)
+        
+        fresh_present = 0
+        
+        for i in range(0, rows):
+            for j in range(0, cols):
+                if grid[i][j] == 1:
+                    fresh_present = 1
+                    break
+        
+        return -1 if fresh_present else Solution.time
+        
+        
+    def rotten(grid, queue, rows, cols):
+            
+        q_len = len(queue)
+        print(f"q_len, queue = {q_len},{queue}")
+        
+        if q_len <=0: return
+        
+        for k in range(0, q_len):
+            i = queue[k][0]
+            j = queue[k][1]
+            
+            if j+1<cols and grid[i][j+1] == 1 :
+                # print("A")
+                grid[i][j+1] = 2 
+                temp = j+1
+                # print(f"appendding (i,j) = {i, temp}")
+                queue.append((i,temp))
+                    
+            if j-1>=0 and grid[i][j-1] == 1 :
+                # print("B")
+                grid[i][j-1] = 2
+                temp = j-1
+                # print(f"appendding (i,j) = {i, temp}")
+                queue.append((i,temp))
+                
+            if i+1<rows and grid[i+1][j] == 1 :
+                # print("C")
+                grid[i+1][j] = 2
+                temp = i+1
+                # print(f"appendding (i,j) = {temp, j}")
+                queue.append((temp,j))
+                    
+            if i-1>=0 and grid[i-1][j] == 1 :
+                # print("D")
+                grid[i-1][j] = 2
+                temp = i-1
+                # print(f"appendding (i,j) = {temp, j}")
+                queue.append((temp,j))
+                
+        for k in range(0, q_len):
+            queue.pop(0)
+        
+        if len(queue)>0:
+            Solution.time+=1
+                
+        print("calling the rottens")
+        Solution.rotten(grid, queue, rows, cols)
+        
+        
+            
+    # The below logic is not correct as in this one i have considered that only one orange is rotten but this is completely wrong assumption. this also shows that i am not considering the question correctly and not taking enough test cases to check all the cases. Please keep this in your mind while solving the questions.
+        
+        
+#         for i in range(0, rows):
+#             for j in range(0, cols):
+#                 print(f"i, j = {i}, {j}")
+#                 print(f"grid[i][j] = {grid[i][j]}")
+#                 if grid[i][j] == 2:
+#                     update_time = 0
+                        
+#                     if j+1<cols and grid[i][j+1] == 1 :
+#                         print("A")
+#                         grid[i][j+1] = 2 
+#                         update_time = 1
+                        
+#                     if j-1>=0 and grid[i][j-1] == 1 :
+#                         print("B")
+#                         grid[i][j-1] = 2
+#                         update_time = 1
+                    
+#                     if i+1<rows and grid[i+1][j] == 1 :
+#                         print("C")
+#                         grid[i+1][j] = 2
+#                         update_time = 1
+                        
+#                     if i-1>=0 and grid[i-1][j] == 1 :
+#                         print("D")
+#                         grid[i-1][j] = 2
+#                         update_time = 1
+                    
+#                     if update_time == 1:
+#                         time+=1
+#                         print(f"time = {time}")
+                        
+#                     print("  ")
+        
+#         fresh_present = 0
+        
+#         for i in range(0, rows):
+#             for j in range(0, cols):
+#                 if grid[i][j] == 1:
+#                     fresh_present = 1
+#                     break
+        
+#         if fresh_present: return -1
+        
+#         print(time)
+#         return time
+                            

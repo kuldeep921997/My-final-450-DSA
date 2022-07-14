@@ -1,0 +1,17 @@
+def insert(s, ele):
+    if len(s)==0:
+        s.append(ele)
+        return
+    val = s.pop()
+    insert(s, ele)
+    s.append(val)
+    
+def reverseStack(s):
+    if len(s)==0: return
+    ele = s.pop()
+    reverseStack(s)
+    insert(s, ele)
+    
+s = [1,2,3,4,5]
+reverseStack(s)
+print(s)

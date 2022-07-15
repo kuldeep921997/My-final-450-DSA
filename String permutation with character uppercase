@@ -4,10 +4,15 @@ def solve(ip, op):
         return
     # 32
     # A->65 , a->97 therefore 97-65 = 32
-    solve(ip[1:], op+chr(ord(ip[0])-32))
+    # Character to ASCII code ==> ord()
+    # ASCII code to Character ==> chr()
+    
+    # solve(ip[1:], op+chr(ord(ip[0])-32))
+    
+    solve(ip[1:], op+ip[0].upper())
     solve(ip[1:], op+ip[0])
 
-ip = "abc"
+ip = "ab"
 op = ''
 ans = list()
 solve(ip, op)

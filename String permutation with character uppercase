@@ -1,0 +1,14 @@
+def solve(ip, op):
+    if len(ip)==0:
+        ans.append(op)
+        return
+    # 32
+    # A->65 , a->97 therefore 97-65 = 32
+    solve(ip[1:], op+chr(ord(ip[0])-32))
+    solve(ip[1:], op+ip[0])
+
+ip = "abc"
+op = ''
+ans = list()
+solve(ip, op)
+print(ans)

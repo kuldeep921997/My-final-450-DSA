@@ -1,0 +1,13 @@
+def solve(ip, op):
+    if len(ip)==0:
+        ans.append(op)
+        return
+    solve(ip[1:], op+ip[0])
+    solve(ip[1:], op+" "+ip[0])
+    
+ip = "abc"
+op = ip[:1]
+ip = ip[1:]
+ans = list()
+solve(ip, op)
+print(ans)

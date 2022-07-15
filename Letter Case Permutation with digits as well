@@ -1,0 +1,23 @@
+class Solution:
+    def letterCasePermutation(self, s: str) -> List[str]:
+        
+        res = list()
+        op=""
+        ip=s[:]
+        
+        def permute(ip, op):
+            if len(ip) == 0:
+                res.append(op[:])
+                return
+            
+            if (ord(ip[0]) >=65 and ord(ip[0]) <=91) or (ord(ip[0]) >=97 and ord(ip[0]) <=123):
+                permute(ip[1:], op+ip[0].upper())
+                permute(ip[1:], op+ip[0].lower())
+            else:
+                permute(ip[1:], op+ip[0])
+        
+        
+        permute(ip,op)
+        return res
+        
+        

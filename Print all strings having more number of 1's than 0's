@@ -16,3 +16,25 @@ def solve(once, zeros, loop, op):
 solve(once, zeros, loop, op)
 print(res)
         
+        
+        
+# Mush better approach.
+
+
+loop = 4
+once, zeros = 0, 0 
+op = ""
+res = list()
+
+def solve(once, zeros, loop, op):
+    # if zeros > once : return
+    
+    if loop == 0:
+        res.append(op)
+        return
+    
+    solve(once+1, zeros, loop-1, op+"1")
+    if once>zeros : solve(once, zeros+1, loop-1, op+"0")
+    
+solve(once, zeros, loop, op)
+print(res)
